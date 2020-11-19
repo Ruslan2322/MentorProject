@@ -1,0 +1,62 @@
+package main.java.com.ruslan2322.javacore.chapter18.Collections.Habr.Habr_peoples_works;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+
+public class ArrayListDemo {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<String>(4);
+        list.add("0");
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        list.add("4"); // При добавлении происходит операция расширения массива по формуле (oldCapacity * 3 )/2 + 1
+        // new capacity = 7;
+        System.out.println(list);
+
+
+        LinkedList<String> ll = new LinkedList<String>();
+        ll.add("32");
+        ll.add("32");
+        ll.add("32");
+        ll.add("32");
+        ll.add("32");
+        ll.add("32");
+        System.out.println(ll);
+        list.addAll(3, ll);
+        System.out.println(list);
+//        list.remove(2);
+        System.out.println(list);
+
+        int count = 0;
+        for (int i = 0; i < list.size(); i++) {
+            count++;
+
+            System.out.println(count);
+
+            System.out.println("============================");
+
+            list.remove("32");// по значению удален будет лишь первый элемент, но текущая величина капасити
+            // не уменьшится, что приведет к потери памяти
+            System.out.println(list);
+
+            count = 0;
+            for (i = 0; i < list.toArray().length; i++) {
+                count++;
+            }
+            System.out.println(count);
+
+
+            // для очистки памяти нужно применять метод trimtoSize();
+
+            list.trimToSize();
+            count = 0;
+            for (i = 0; i < list.size(); i++) {
+                count++;
+            }
+            System.out.println(count);
+
+        }
+
+    }
+}
