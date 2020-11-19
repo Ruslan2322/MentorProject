@@ -1,0 +1,67 @@
+package main.java.com.ruslan2322.javacore.chapter18.Collections.Habr.Habr_peoples_works;
+import java.util.*;
+
+public class HashMapDemo {
+
+
+    	static int hash(int h) {
+           h ^= (h >>> 20) ^ (h >>> 12);
+           return h ^ (h >>> 7) ^ (h >>> 4);
+        }
+        static int indexFor(int h, int length) {
+           return h & (length - 1);
+        }
+
+
+
+
+    public static void main(String[] args) {
+
+
+        Map<String, String> hashmap = new HashMap<String, String>();
+        hashmap.put("0", "zero");
+        hashmap.put("key","one");
+        int h1 = "0".hashCode();
+        System.out.println(h1);
+        int i1 = indexFor(hash(h1), 16);
+        System.out.println(i1);
+
+        int h2 = "key".hashCode();
+        System.out.println(h2);
+        int i2 = indexFor(hash(h2), 16);
+        System.out.println(i2);
+
+        hashmap.put(null,null);
+
+
+        System.out.println(hashmap);
+
+        hashmap.put("idx", "two");
+
+        System.out.println(hashmap);
+
+        int h4 = "idx".hashCode();
+        System.out.println(h4);
+        int i4 = indexFor(hash(h4), 16);
+        System.out.println(i4);
+
+        System.out.println("====================================");
+
+
+        for (Map.Entry<String, String> entry: hashmap.entrySet())
+            System.out.println(entry.getKey() + " = " + entry.getValue());
+
+        System.out.println("====================================");
+
+        for (String key: hashmap.keySet())
+            System.out.println(hashmap.get(key));
+
+        System.out.println("====================================");
+
+        Iterator<Map.Entry<String, String>> itr = hashmap.entrySet().iterator();
+        while (itr.hasNext())
+            System.out.println(itr.next());
+
+
+    }
+}
