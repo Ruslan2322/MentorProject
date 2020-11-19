@@ -1,0 +1,34 @@
+package main.java.com.ruslan2322.javacore.chapter18.Collections.Habr.Habr_peoples_works;
+
+import com.sun.jdi.event.MethodEntryEvent;
+
+import java.util.LinkedList;
+import java.util.*;
+
+public class LinkedListDemo {
+    public static void main(String[] args) {
+
+        LinkedList<String> ll = new LinkedList<String>();
+        ListIterator<String> itr = ll.listIterator();
+
+
+        ll.add("Bodya");
+        ll.add("Vasya");
+        ll.add("Yasha");
+        ll.add(1,"Yasha");
+        ll.addLast("Misha");
+        ll.addFirst("Grisha");
+        System.out.println(ll);
+
+        ll.removeFirst();
+        ll.removeLast();
+        ll.remove("Yasha");
+        ll.descendingIterator();
+        ll.listIterator(1).add("Yasha");
+
+
+
+        System.out.println(ll);
+
+    }
+}
