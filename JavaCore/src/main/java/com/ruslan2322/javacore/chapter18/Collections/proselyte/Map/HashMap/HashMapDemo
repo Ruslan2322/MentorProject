@@ -1,0 +1,42 @@
+package main.java.com.ruslan2322.javacore.chapter18.Collections.proselyte.Map.Hashmap;
+import java.util.*;
+
+public class HashMapDemo {
+    public static void main(String[] args) {
+        HashMap hashMap = new HashMap<>();
+
+        System.out.println("Adding element into hashmap...");
+        hashMap.put("Proselyte", "Java");
+        hashMap.put("AsyaSmile", "UI/UX");
+        hashMap.put("Peter", "C++");
+        hashMap.put("Ann", "PHP");
+
+        System.out.println("Initial HashMap: ");
+        System.out.println(hashMap);
+
+        System.out.println("\n========================\n");
+        System.out.println("Initial hashMap content using Set: ");
+        Set set = hashMap.entrySet();
+
+        for(Object element : set){
+            Map.Entry mapEntry = (Map.Entry) element;
+            System.out.println(mapEntry.getKey() + ":" + mapEntry.getValue());
+        }
+        System.out.println("\n========================\n");
+
+        System.out.println("Modifying Proselyte's speciality...");
+        String speciality = (String) hashMap.get("Proselyte");
+        speciality += " Developer(Changed) ";
+        hashMap.put("Proselyte", speciality);
+
+        System.out.println("\n========================\n");
+        System.out.println("Final hashMap content using Set: ");
+
+        for (Object element : set) {
+            Map.Entry mapEntry = (Map.Entry) element;
+            System.out.println(mapEntry.getKey() + ":" + mapEntry.getValue());
+        }
+        System.out.println("\n========================\n");
+    }
+
+}
