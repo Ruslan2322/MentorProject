@@ -1,0 +1,36 @@
+package main.java.com.ruslan2322.javacore.chapter18.Collections.proselyte.List.LinkedList;
+import java.util.*;
+
+public class LinkedListDemo {
+    public static void main(String[] args) {
+        LinkedList linkedList = new LinkedList<>();
+
+        System.out.println("Adding elements of LinkedList... ");
+
+        linkedList.add("Second");
+        linkedList.add("Third");
+        linkedList.add("Fourth");
+
+        linkedList.addFirst("First");
+        linkedList.addLast("Fifth");
+
+        linkedList.add(1, "One and half");
+
+        System.out.println("Initial linkedlist content: ");
+        System.out.println(linkedList);
+
+        System.out.println("Removing element First, Fifth and one and a half ");
+
+        linkedList.removeFirst();
+        linkedList.removeLast();
+        linkedList.remove("One and half");
+
+        System.out.println("Changing element with value Second ");
+        linkedList.set(0,"Changed "+ linkedList.get(0));
+
+        System.out.println("Final linkedList content : ");
+        System.out.println(linkedList);
+
+
+    }
+}
