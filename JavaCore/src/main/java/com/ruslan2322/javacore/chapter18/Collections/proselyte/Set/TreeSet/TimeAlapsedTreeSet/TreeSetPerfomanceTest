@@ -1,0 +1,36 @@
+package main.java.com.ruslan2322.javacore.chapter18.Collections.proselyte.Set.TreeSet.timeElapsedTreeSet;
+import java.util.*;
+
+public class TreeSetPerformanceTest {
+    public static void main(String[] args) {
+        List arrayList = new ArrayList<>();
+        TreeSet treeSet = new TreeSet<>();
+
+        System.out.println("Filling our structures...");
+
+        for (int i = 0; i < 1_000_000; i++){
+            arrayList.add(i);
+            treeSet.add(i);
+        }
+        System.out.println("trying to receive element 999,999 in arrayList ");
+
+        long start = System.nanoTime();
+        arrayList.get(999_999);
+        long end = System.nanoTime();
+
+        long timeElapsedArrayList = end - start;
+
+        System.out.println("Time elapsed for ArrayList: "+ timeElapsedArrayList);
+
+        System.out.println("Trying to receive element 999,999 in arrayList ");
+
+        start = System.nanoTime();
+        arrayList.get(999_999);
+        end = System.nanoTime();
+
+        long timeElapsedTreeSet = end - start;
+
+        System.out.println("Time elapsed for TreeSet: "+ timeElapsedTreeSet);
+        System.out.println("TreeSet "+ (int) (timeElapsedArrayList/timeElapsedTreeSet)+ " times more effective ");
+    }
+}
