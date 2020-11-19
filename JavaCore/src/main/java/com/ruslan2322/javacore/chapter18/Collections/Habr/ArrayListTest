@@ -1,0 +1,22 @@
+package main.java.com.ruslan2322.javacore.chapter18.Collections.Habr.Habr_peoples_works;
+import java.util.*;
+
+public class ArrayListTest {
+    public static void main(String[] args) {
+
+        List test = new ArrayList<>();
+
+        System.out.println("Creating Arraylist...");
+
+        for (int i = 0; i < 100; i++){
+            int a = (int)(Math.random()+21);
+            test.add(i);
+            System.out.println(test);
+        }
+
+        System.out.println("Removing element 32...");
+        test.remove(32);
+        System.out.println("Done");
+
+    }
+}
