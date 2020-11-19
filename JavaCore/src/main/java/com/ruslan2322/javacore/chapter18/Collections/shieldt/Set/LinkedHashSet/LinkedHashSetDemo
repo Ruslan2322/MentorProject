@@ -1,0 +1,20 @@
+package main.java.com.ruslan2322.javacore.chapter18.Collections.shieldt.Set.LinkedHashSet;
+
+import java.util.LinkedHashSet;
+
+public class LinkedHashSetDemo {
+    public static void main(String[] args) {
+        // создать хеш-множество
+        LinkedHashSet<String> hs = new LinkedHashSet<String>();
+
+        // ввести элементы в хеш-множество
+        hs.add("Бета");
+        hs.add("Альфа");
+        hs.add("Эта");
+        hs.add("Гамма");
+        hs.add("Эпсилон");
+        hs.add("Омега");
+
+        System.out.println(hs);
+    }
+}
