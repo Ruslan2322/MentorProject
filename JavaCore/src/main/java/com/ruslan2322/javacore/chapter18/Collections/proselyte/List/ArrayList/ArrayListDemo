@@ -1,0 +1,23 @@
+package main.java.com.ruslan2322.javacore.chapter18.Collections.proselyte.List.ArrayList;
+import java.util.*;
+
+public class ArrayListDemo {
+    public static void main(String[] args) {
+        List arrayList = new ArrayList<>();
+
+        arrayList.add("First");
+        arrayList.add("Second");
+        arrayList.add("Third");
+        arrayList.add("Fourth");
+        arrayList.add("Fifth");
+
+        System.out.println("Initial size of ArrayList : "+ arrayList.size());
+        System.out.println("Final ArrayList content : "+ arrayList);
+
+        arrayList.remove("Third");
+        arrayList.remove(1);
+
+        System.out.println("Initial size of ArrayList : "+ arrayList.size());
+        System.out.println("Final ArrayList content : "+ arrayList);
+    }
+}
