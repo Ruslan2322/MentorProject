@@ -1,0 +1,51 @@
+package main.java.com.ruslan2322.javacore.chapter18.Collections.Practice.stage_01;
+
+import java.util.Arrays;
+
+/** Задание 1
+ * Дан массив целых чисел. Необходимо реализовать метод, который возвращает индексы массива,
+ * значения которых в сумме дают число переданное в массив.
+ * Предполагается, что массив содержит только уникальные числа и всегда имеет искомые числа.
+ * Один и тот же элемент не может быть использован дважды.
+ * array = [3, 8, 15, 17], Number = 23
+ * result = [1,2]
+ * Т.е. индексы 1 и 2 (значение 8 и 15) в сумме дают искомое число 23 */
+
+public class Task_01 {
+
+    public static void main(String[] args) {
+
+        int Number = 23;
+        // В данном массиве 2 пары цифр при сложении выдают 23, это 23 и 0 и  15 и 8, ниже приведу в пример 2 массива
+        // с перестановкой  этих пар
+        int[] array = new int[]{ 1, 15, 23, 0, 45, 56, 5, 6, 8, 1};
+        int[] array1 = new int[]{ 1, 1, 23, 0, 45, 56, 15, 6, 8, 1};
+        indexReturn(Number, array);
+        indexReturn(Number, array1);
+    }
+
+    // метод выявления индекса
+    public static void indexReturn(int Number, int... array) {
+
+        int indx[] = new int[2];
+        boolean isTrue = false;
+
+        // проводим вычисления через 2ой цикл for
+        for (int i = 0; i < array.length; i++) {
+            int C = array[i];
+            for (int j = 0; j < array.length-1; j++) {
+                // Как только получаем нужный результат закрываем цикл изменяя значение буденовской переменной
+                if (array[i] + array[j+1] == Number) {
+                isTrue = true;
+                    System.out.println(true);
+                    int indx1 = i;
+                    int indx2 = j+1;
+                    System.out.println("Array: "+ Arrays.toString(array)+"\nNumber = "+ Number + "\nresult = ["+ indx1 + ", " + indx2 +"]");
+                }
+            }
+            if (isTrue == true)
+                break;
+            else C = array[0 + 1];
+            }
+        }
+    }
