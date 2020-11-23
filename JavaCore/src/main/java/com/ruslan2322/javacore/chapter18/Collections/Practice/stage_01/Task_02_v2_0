@@ -1,0 +1,46 @@
+package main.java.com.ruslan2322.javacore.chapter18.Collections.Practice.stage_01;
+
+import java.util.*;
+
+/** Задание 2
+ * Дан массив целых чисел.
+ * Необходимо реализовать метод, которые определяет, содержит ли данный массив дубликаты
+ * Пример:
+ * Array: [4,5,6,6,8]
+ * Result: true
+ * Число 6 повторяется 2 раза
+ * Array: [4,5,6,7,8]
+ * Result: false
+ * Дубликатов нет
+ */
+
+
+public class Task_02_v2_0 {
+    public static void main(String[] args) {
+
+
+        int array[] = new int[]{4, 5, 6, 7, 8};
+        int array2[] = new int[]{3,4,5,6,7,8,9,7};
+
+        proverka(array);
+        proverka(array2);
+
+
+    }
+
+    public static void proverka(int... array) {
+        HashSet<Integer> hh = new HashSet<Integer>();
+
+        int T = 0;
+
+        for (int j = 0; j < array.length; j++) {
+            if (hh.add(array[j]) != true) {
+                T = array[j];
+                System.out.println("Result: " + true + "Число: " + T + " повторяется.");
+            }
+        }
+        if (T == 0)
+            System.out.println("Result: " + false + "\nСовпадений нет");
+
+    }
+}
