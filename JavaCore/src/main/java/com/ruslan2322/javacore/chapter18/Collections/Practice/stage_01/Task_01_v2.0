@@ -1,0 +1,58 @@
+package main.java.com.ruslan2322.javacore.chapter18.Collections.Practice.stage_01;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.*;
+
+/** Задание 1
+ * Дан массив целых чисел. Необходимо реализовать метод, который возвращает индексы массива,
+ * значения которых в сумме дают число переданное в массив.
+ * Предполагается, что массив содержит только уникальные числа и всегда имеет искомые числа.
+ * Один и тот же элемент не может быть использован дважды.
+ * array = [3, 8, 15, 17], Number = 23
+ * result = [1,2]
+ * Т.е. индексы 1 и 2 (значение 8 и 15) в сумме дают искомое число 23 */
+
+public class Task_01 {
+
+    public static void main(String[] args) {
+
+        int Number = 23;
+        // В данном массиве 2 пары цифр при сложении выдают 23, это 23 и 0 и  15 и 8, ниже приведу в пример 2 массива
+        // с перестановкой  этих пар
+        int[] array = new int[]{ 1, 15, 23, 0, 45, 56, 5, 6, 8, 1};
+
+        Map<Integer,Integer> map = new HashMap<Integer,Integer>();
+
+
+
+        for (int i = 0; i < array.length; i++){
+            map.put(i, array[i]);
+        }
+        System.out.println(map);
+
+
+        // ищем в мапе 23
+
+        Set set = map.entrySet();
+
+
+        for (int j = 0; j < map.size(); j ++){
+            // если есть в листе то true, а также не знаю , как реализовать, что бы был поиск суммы
+            // Есть идея , что если в массиве нет Number и 0 , то найти наиболее близкое  к Number, которое меньше его
+            // А затем подбирать элементы по значению которые бы дали в результате Number, но я не знаю как это реализовать
+            if (map.containsValue(Number)) {
+                System.out.println(true);
+
+
+                break;
+            }
+            if (!map.containsKey(Number)) {
+
+                }
+            }
+
+                }
+            }
+        
