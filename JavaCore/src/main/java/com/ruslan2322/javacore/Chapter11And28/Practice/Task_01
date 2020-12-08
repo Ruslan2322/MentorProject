@@ -1,0 +1,79 @@
+package main.java.com.ruslan2322.javacore.multithreading.Practice;
+
+/**Задание 1
+
+ Дан класс:
+
+ public class Foo {
+ public void first() { print("first"); }
+ public void second() { print("second"); }
+ public void third() { print("third"); }
+ }
+
+ Один и тот же экземпляр данного класса будет вызван 3мя разными потоками.
+ Поток А - будет вызывать метод first(). Поток B - second(). Поток С - third().
+ Необходимо реализовать механизм и изменить программу таким образом, что методы класса Foo будут вызваны в правильном порядке.
+
+
+ Пример:
+ Вывод: "firstsecondthird"
+ Мы не знаем, в каком порядке будут вызваны методы, но должны гарантировать порядок.
+ */
+
+
+// наверное это решение неверное, я думал об решении с wait() и notify() , но так ничего не родил
+public class Foo  implements  Runnable {
+
+
+    String name;
+    Thread one;
+    Thread two;
+    Thread three;
+
+    public Foo(String n, Thread o, Thread t, Thread th){
+        name = n;
+        one = o;
+        two = t;
+        three = th;
+        o = new Thread();
+        t = new Thread();
+        th = new Thread();
+        o.start();
+        t.start();
+        th.start();
+
+    }
+
+    public void first() { print("first"); }
+    public void second() { print("second"); }
+    public void third() { print("third"); }
+
+    static void print(String str){
+        System.out.println(str);
+}
+
+
+    @Override
+    public synchronized void run() {
+
+        first();
+        second();
+        third();
+
+    }
+}
+
+
+
+class MainDemo {
+    public static void main(String[] args) {
+
+
+        Thread f = new Thread();
+        Thread f2 = new Thread();
+        Thread f3= new Thread();
+        Foo foo = new Foo("New",f ,f2,f3 );
+        foo.run();
+
+    }
+}
