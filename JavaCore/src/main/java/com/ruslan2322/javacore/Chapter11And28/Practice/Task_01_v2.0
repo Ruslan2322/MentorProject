@@ -1,0 +1,56 @@
+package main.java.com.ruslan2322.javacore.multithreading.Practice.Task_01;
+
+/**Задание 1
+
+ Дан класс:
+
+ public class Foo {
+ public void first() { print("first"); }
+ public void second() { print("second"); }
+ public void third() { print("third"); }
+ }
+
+ Один и тот же экземпляр данного класса будет вызван 3мя разными потоками. Поток А - будет вызывать метод first(). Поток B - second(). Поток С - third().
+ Необходимо реализовать механизм и изменить программу таким образом, что методы класса Foo будут вызваны в правильном порядке.
+
+
+ Пример:
+ Вывод: "firstsecondthird"
+ Мы не знаем, в каком порядке будут вызваны методы, но должны гарантировать порядок.
+ */
+
+// version 2.0
+public class Foo  {
+
+    String name;
+
+    public Foo(String n){
+        name = n;
+        Thread A;
+        new Thread(this::first).start();
+        new Thread(this::second).start();
+        new Thread(this::third).start();
+    }
+
+    public void first() { print("first"); }
+    public void second() { print("second"); }
+    public void third() { print("third"); }
+
+    public void print(String str){
+        System.out.print(str);
+    }
+}
+
+
+
+ class Main {
+    public static void main(String[] args) {
+
+        System.out.println("Количество доступных потоков системы = "+ Runtime.getRuntime().availableProcessors());
+
+        Foo a = new Foo("Java");
+
+
+
+    }
+}
