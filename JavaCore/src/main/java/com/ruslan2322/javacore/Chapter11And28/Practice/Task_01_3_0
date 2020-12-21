@@ -1,0 +1,107 @@
+package main.java.com.ruslan2322.javacore.multithreading.Practice.Task_01.Task_01v_03;
+
+import java.util.concurrent.Semaphore;
+
+/**Задание 1
+
+ Дан класс:
+
+ public class Foo {
+ public void first() { print("first"); }
+ public void second() { print("second"); }
+ public void third() { print("third"); }
+ }
+
+ Один и тот же экземпляр данного класса будет вызван 3мя разными потоками. Поток А - будет вызывать метод first(). Поток B - second(). Поток С - third().
+ Необходимо реализовать механизм и изменить программу таким образом, что методы класса Foo будут вызваны в правильном порядке.
+
+
+ Пример:
+ Вывод: "firstsecondthird"
+ Мы не знаем, в каком порядке будут вызваны методы, но должны гарантировать порядок.
+ */
+
+// version 3.0
+import java.util.concurrent.*;
+
+public class Foo {
+
+        public void first() { print("first"); }
+        public void second() { print("second"); }
+        public void third() { print("third"); }
+        public void print(String s){
+            System.out.print(s);
+        }
+    }
+
+    class Main {
+    public static void main(String[] args) {
+
+        Semaphore sem = new Semaphore(0);
+        Semaphore sem2 = new Semaphore(1);
+        Semaphore sem3 = new Semaphore(2);
+
+        Foo res = new Foo();
+
+
+        Thread A = new MyThread(res,sem, "A");
+        A.start();
+
+        Thread B = new MyThread(res,sem2, "B");
+        B.start();
+
+        Thread C = new MyThread(res,sem3, "C");
+        C.start();
+    }
+}
+
+
+class MyThread extends Thread {
+
+    Foo res;
+    Semaphore sem;
+    String name;
+    boolean A = false;
+    boolean B = false;
+    int C = 100;
+
+    MyThread(Foo res, Semaphore sem, String name) {
+        this.res = res;
+        this.sem = sem;
+        this.name = name;
+    }
+
+    public synchronized void run() {
+
+
+
+// не могу понять в чем проблема , программа не завершается, как проверить 1 поток выполняет все методы или разные?
+
+            try {
+                {sem.acquire(2);
+                res.first();
+//                res.second();
+//                res.third();
+                ;}
+               {sem.acquire(0);
+
+                res.second();}
+
+                { sem.acquire(0);
+                res.third();}
+
+
+
+
+
+
+            }catch (InterruptedException e) {
+                System.out.println(e);
+            }
+        sem.release();
+
+        }
+    }
+
+
+
